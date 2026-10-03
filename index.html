@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATTIRANT HORIZON | Official Game Site</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #0f172a; color: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        header { background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); text-align: center; padding: 80px 20px; border-bottom: 2px solid #38bdf8; }
+        h1 { font-size: 3.5rem; color: #38bdf8; letter-spacing: 4px; font-weight: 900; margin-bottom: 10px; text-shadow: 0 4px 10px rgba(56,189,248,0.3); }
+        .tagline { font-size: 1.25rem; color: #94a3b8; margin-bottom: 30px; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { background-color: #1e293b; padding: 30px; border-radius: 12px; border: 1px solid #334155; text-align: center; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); border-color: #38bdf8; }
+        .card h3 { font-size: 1.5rem; color: #f1f5f9; margin-bottom: 15px; }
+        .price { font-size: 2rem; color: #34d399; font-weight: bold; margin: 15px 0; }
+        .btn { background-color: #2563eb; color: white; border: none; padding: 12px 28px; font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; transition: background 0.2s; }
+        .btn:hover { background-color: #1d4ed8; }
+        .notice { background-color: #1e293b; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b; margin-top: 20px; font-size: 0.9rem; color: #cbd5e1; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ATTIRANT HORIZON</h1>
+        <p class="tagline">Next-Generation Interstellar Tactical 3D Shooter. Optimized for Next-Gen Action.</p>
+    </header>
+
+    <div class="container">
+        <h2>OPERATOR REAL-MONEY WEAPON UPGRADE MARKETPLACE</h2>
+        <p style="color: #94a3b8;">No Credit Card? No problem. Simply click any purchase booster pack option below to pay instantly using your <strong>Debit Card, Prepaid Wallet, Apple Pay, or Google Pay</strong> processing gateways.</p>
+        
+        <div class="notice">
+            <strong>Active Target Profile Session:</strong> player_12345 (Change this ID to route variables to alternative test game instances).
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Tactical Sprint Booster</h3>
+                <p>Increases base movement and traversal velocity speeds scaling across target arenas.</p>
+                <div class="price">$1.99</div>
+                <button class="btn" onclick="buyItem('speed', 1.99)">Purchase Upgrade Package</button>
+            </div>
+
+            <div class="card">
+                <h3>Heavy Armor Plating</h3>
+                <p>Equips maximum baseline protective armor values preventing rapid engagement damage falloffs.</p>
+                <div class="price">$2.99</div>
+                <button class="btn" onclick="buyItem('armor', 2.99)">Purchase Upgrade Package</button>
+            </div>
+
+            <div class="card">
+                <h3>Kinetic Caliber Rounds</h3>
+                <p>Permanently scales primary output loadout configuration damage scaling values.</p>
+                <div class="price">$4.99</div>
+                <button class="btn" onclick="buyItem('damage', 4.99)">Purchase Upgrade Package</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async def buyItem(itemName, itemPrice) {
+            const targetServerUrl = "http://127.0.0";
+            
+            try {
+                const response = await fetch(targetServerUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        user_id: "player_12345",
+                        upgrade_item: itemName,
+                        amount_usd: itemPrice
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    // Automatically forwards client user outward into secure payment window configuration interfaces
+                    window.location.href = data.checkout_url;
+                } else {
+                    alert("Error communicating securely with internal backend server validation routers.");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Network communication timeout error connecting to backend gateway server.");
+            }
+        }
+    </script>
+</body>
+</html>
